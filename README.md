@@ -58,12 +58,13 @@ seajs.use("com_element", function (COM) {
 
 #### 2. 目录规范
 
-
+```
 |--index.html
 |--xxx   // 组件名为目录名，譬如选项卡就是tab
 |-----index.js
 |-----index.css
 |-----index.html
+```
 
 
 // TODO
