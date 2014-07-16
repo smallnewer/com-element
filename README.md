@@ -25,7 +25,12 @@ JS本身模块化从Node.js的CommondJS，到浏览器端的CMD\AMD，JS社区�
 
 ## 实现概述
 
-1. 
+1.  解析流程
+
+![](http://smallnewer.github.io/com-element/img/com-element%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+
+2. 
+
 
 
 
