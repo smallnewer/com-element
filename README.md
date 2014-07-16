@@ -110,6 +110,9 @@ function ready (com) {
 
 外部套了两层函数，目前都是必须的。平时可以复制粘贴过来。真正的代码要在上述`A`位置开始写（函数ready内部）。
 
+参数com包含了组件的一些基本信息：
+* `com.root` 为`<com-nav>`标签。
+
 至于结尾的return 一个对象，作用是这样的，当代码如下：
 
 ````javascript
@@ -154,6 +157,61 @@ return {
 
 目前提供了一些事件，供外部使用：
 
-* beforeshow
+- [x] beforeshow
+- [x] show
+- [x] beforehide
+- [x] hide
+- [ ] beforeload
+- [ ] load
 
+使用方法:
+````html
+<button id="btn">显示test组件</button>
+<com-test hide></com-test>
+<script>
+var test = document.getElementsByTagName("com-test")[0];
+var btn = document.getElementById("btn");
+test.on("show", function(){
+     alert("欢迎来到test组件");
+});
+
+// 在其他地方触发test显示
+btn.onclick = function(){
+    test.show();    // test会显示出来，然后会弹出“欢迎来到test组件”
+}
+</script>
+````
+#### 8. 自定义事件
+
+自定义事件是标签彼此间沟通的桥梁，也是解耦必须的一个功能。
+想新增一个自定义事件，如下：
+
+````javascript
+define(function (require, exports, module) {
+module.exports = {
+    module : module,
+    ready: ready
+};
+
+function ready (com) {
+    /**
+     * 代码在这开始写
+     */
+    // 在某些条件下，触发：
+    com.root.emit("gogogo!");
+}
+});
+````
+然后让标签绑定了`gogogo!`事件
+```html
+<com-test hide></com-test>
+<script>
+var test = document.getElementsByTagName("com-test")[0];
+
+test.on("gogogo!", function(){
+     alert("gogogo!");
+});
+</script>
+```
+当`emit("gogogo!")`执行后，就会触发回调。`alert("gogogo!");`就会执行。
 
