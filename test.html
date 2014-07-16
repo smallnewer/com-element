@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="sea.js"></script>
+	<script src="seajs-style.js"></script>
+	<script src="seajs-text.js"></script>
+	
+</head>
+<body>
+	<com-nav hide async></com-nav>
+<script>
+seajs.use("custom_element", function (o) {
+	o.start(document.body);
+})
+setTimeout(function () {
+	var a = document.getElementsByTagName('com-nav')[0];
+	a.show();
+},1000)
+
+</script>
+</body>
+</html>
